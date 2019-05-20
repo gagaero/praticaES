@@ -1,34 +1,24 @@
-class Money  {
-   protected int amount;
+class Money {
+   ...
+   static Money dollar(int amount)  {
+      return new Dollar(amount);
+   }
    
-   public boolean equals(Object object)  {
-      Money money = (Money) object;
-      return amount == money.amount;
-   }   
-}
-
+   static Money franc(int amount) {
+      return new Franc(amount);
+    }
+} 
 
 class Dollar {
-   int amount;
-   Dollar(int amount) {
-      this.amount= amount;
-   }
-   void times(int multiplier) {
-      amount= amount * multiplier;
-   }
-}
+   ...
+   Money times(int multiplier)  {
+      return new Dollar(amount * multiplier);
+   }								
+}    
 
-class Franc {   
-   private int amount;					
-   Franc(int amount) {      
-      this.amount= amount;
-    }					
-    Franc times(int multiplier)  {      
-       return new Franc(amount * multiplier);					
-    }   
-    public boolean equals(Object object) {					
-       Franc franc = (Franc) object;      
-       return amount == franc.amount;					
-     }					
-}
-
+class Franc {
+   ...
+   Money times(int multiplier)  {
+      return new Franc(amount * multiplier);
+   }								
+}    
